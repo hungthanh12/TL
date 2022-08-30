@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MAP</title>
+    <style>
+        #map {
+            height: 100%;
+        }
+        
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+    <script defer src="https://api.map4d.vn/sdk/map/js?version=2.0&key=23f763a8173c0f7ead097b28e8684582&callback=initMap"></script>
+</head>
+
+<body>
+
+    <div id="map"></div>
+    <script>
+        function initMap() {
+            let options = {
+                center: {
+                    lat: 17.773766,
+                    lng: 106.709001
+                },
+                zoom: 5,
+                controls: true
+            }
+            let map = new map4d.Map(document.getElementById("map"), options)
+                /*demo
+                            let marker = new map4d.Marker({
+                                    title: "Demo title",
+                                    snippet: "Demo description",
+                                    position: {
+                                        lat: 10.773766,
+                                        lng: 106.709001
+                                    },
+                                })
+                                // Thêm marker vào bản đồ
+                            marker.setMap(map)
+
+
+                            let marker2 = new map4d.Marker({
+                                    title: "Demo title 2",
+                                    snippet: "Demo description",
+                                    position: {
+                                        lat: 10.773776,
+                                        lng: 106.709701
+                                    },
+                                })
+
+                                // Thêm marker vào bản đồ
+
+                            marker2.setMap(map)
+                */
+            let marker3 = new map4d.Marker({
+                    title: "Cần Thơ",
+                    snippet: "Demo description",
+                    position: {
+                        lat: 10.045162,
+                        lng: 105.746857
+                    },
+                })
+                // Thêm marker vào bản đồ
+            marker3.setMap(map)
+
+            let marker4 = new map4d.Marker({
+                    title: "Đà Lạt",
+                    snippet: "Demo description",
+                    position: {
+                        lat: 11.936230,
+                        lng: 108.445259
+                    },
+                })
+                // Thêm marker vào bản đồ
+            marker4.setMap(map)
+
+            let marker5 = new map4d.Marker({
+                    title: "Nha Trang",
+                    snippet: "Demo description",
+                    position: {
+                        lat: 12.2431693,
+                        lng: 109.1898675
+                    },
+                })
+                // Thêm marker vào bản đồ
+            marker5.setMap(map)
+
+            let marker6 = new map4d.Marker({
+                    title: "Hà Nội",
+                    snippet: "Demo description",
+                    position: {
+                        lat: 21.0294498,
+                        lng: 105.8544441
+                    },
+                })
+                // Thêm marker vào bản đồ
+            marker6.setMap(map)
+
+            let marker7 = new map4d.Marker({
+                    title: "Svay Rieng",
+                    snippet: "Demo description",
+                    position: {
+                        lat: 11.1942275,
+                        lng: 105.7973275083619
+                    },
+                })
+                // Thêm marker vào bản đồ
+            marker7.setMap(map)
+
+            let marker8 = new map4d.Marker({
+                    title: "Phnôm Pênh",
+                    snippet: "Demo description",
+                    position: {
+                        lat: 11.568271,
+                        lng: 104.9224426
+                    },
+                })
+                // Thêm marker vào bản đồ
+            marker8.setMap(map)
+        }
+
+        let marker9 = new map4d.Marker({
+                title: "Yangon",
+                snippet: "Demo description",
+                position: {
+                    lat: 16.7967129,
+                    lng: 96.1609916
+                },
+            })
+            // Thêm marker vào bản đồ
+        marker9.setMap(map)
+
+        let marker10 = new map4d.Marker({
+                title: "Melbourne",
+                snippet: "Demo description",
+                position: {
+                    lat: -37.8142176,
+                    lng: -37.8142176
+                },
+            })
+            // Thêm marker vào bản đồ
+        marker10.setMap(map)
+
+        let marker11 = new map4d.Marker({
+                title: "PERTH",
+                snippet: "Demo description",
+                position: {
+                    lat: -31.9558964,
+                    lng: 115.8605801
+                },
+            })
+            // Thêm marker vào bản đồ
+        marker11.setMap(map)
+
+
+        let marker12 = new map4d.Marker({
+                title: "BATTAMBANG",
+                snippet: "Demo description",
+                position: {
+                    lat: 12.9256791,
+                    lng: 103.2317136
+                },
+            })
+            // Thêm marker vào bản đồ
+        marker12.setMap(map)
+
+        let marker13 = new map4d.Marker({
+                title: "PHÚ QUỐC",
+                snippet: "Demo description",
+                position: {
+                    lat: 10.2153093,
+                    lng: 103.9880443
+                },
+            })
+            // Thêm marker vào bản đồ
+        marker13.setMap(map)
+
+        let marker14 = new map4d.Marker({
+                title: "Côn Đảo",
+                snippet: "Demo description",
+                position: {
+                    lat: 8.7003427,
+                    lng: 106.6067855
+                },
+            })
+            // Thêm marker vào bản đồ
+        marker14.setMap(map)
+
+        let marker15 = new map4d.Marker({
+                title: "Qui Nhơn",
+                snippet: "Demo description",
+                position: {
+                    lat: 13.7554188,
+                    lng: 109.1766433
+                },
+            })
+            // Thêm marker vào bản đồ
+        marker15.setMap(map)
+
+        let marker16 = new map4d.Marker({
+                title: "Dubai",
+                snippet: "Demo description",
+                position: {
+                    lat: 25.0742823,
+                    lng: 55.1885387
+                },
+            })
+            // Thêm marker vào bản đồ
+        marker16.setMap(map)
+
+        let marker17 = new map4d.Marker({
+                title: "Toronto",
+                snippet: "Demo description",
+                position: {
+                    lat: 43.6534817,
+                    lng: -79.3839347
+                },
+            })
+            // Thêm marker vào bản đồ
+        marker17.setMap(map)
+    </script>
+
+</body>
+
+</html>

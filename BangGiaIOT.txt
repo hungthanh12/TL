@@ -1,0 +1,54 @@
+*Hiện tại có 4 mức giá:
+  - Mức giá 1: Từ 0 đến 100000, giá là: 0vnd,
+  - Mức giá 2: Từ 100001 đến 500000, giá là: 93vnd,
+  - Mức giá 3: Từ 500001 đến 1250000, giá là: 70vnd,
+  - Mức giá 2: Từ 1250001 trở đi, giá: Liên hệ,
+
+Cách tính: Nếu số lượng ở 1200000 được tính: 
+		(100000 * 0) + ((500000 - 100001) * 93) + ((1200000 - 500001) * 70)
+		
+
+<script>
+        $(document).ready(function() {
+        //phần get value từ json
+            $.getJSON('https://api-app.map4d.vn/map/price?isPublic=true', function(iotdata) {
+
+                for (let i = 0; i < iotdata.result.length; i++) {
+                    $('#title' + i).text(iotdata.result[i].serviceNameVi);
+                }
+                for (let i = 0; i < iotdata.result.length; i++) {
+                    $('#myRange' + i).on('input', function() {
+                        //khai báo biến để biết giá trị thanh trượt
+                        var rangeval = $('#myRange' + i).val();
+                        // lấy điều kiện giá mức level0
+                        if (rangeval <= parseInt(iotdata.result[i].prices[0].to)) {
+                            myrangetxt = rangeval * parseInt(iotdata.result[i].prices[0].amount.value);
+                            // điều kiện giá mức level1
+                        } else if (rangeval <= parseInt(iotdata.result[i].prices[1].to)) {
+                            myrangetxt = rangeval * parseInt(iotdata.result[i].prices[1].amount.value);
+                            // điều kiện giá mức level2
+                        } else if (rangeval <= parseInt(iotdata.result[i].prices[2].to)) {
+                            myrangetxt = rangeval * parseInt(iotdata.result[i].prices[2].amount.value);
+                            //điều kiện giá mức level3
+                        } else {
+                            myrangetxt = "Contact Us";
+                        }
+                        $('#value' + i).text(addCommas(rangeval));
+                        $('#price' + i).text(addCommas(myrangetxt));
+                    });
+                }
+                //format number
+                function addCommas(nStr) {
+                    nStr += '';
+                    x = nStr.split('.');
+                    x1 = x[0];
+                    x2 = x.length > 1 ? '.' + x[1] : '';
+                    var rgx = /(\d+)(\d{3})/;
+                    while (rgx.test(x1)) {
+                        x1 = x1.replace(rgx, '$1' + ',' + '$2');
+                    }
+                    return x1 + x2;
+                }
+            });
+        });
+    </script>

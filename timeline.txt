@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .time {
+            display: flex;
+            justify-content: space-between;
+            margin-left: 40px;
+            margin-right: 30px;
+        }
+        
+        .time_item {
+            text-align: center;
+            position: relative;
+        }
+        
+        .time_item-year {
+            padding: 24px 14px;
+            border: 6px solid #F2F6FA;
+            border-radius: 100rem;
+            font-size: 16px;
+            font-weight: bold;
+            position: relative;
+            transition: all .3s linear;
+            background-color: #ffffff;
+        }
+        
+        .time_item.active .time_item-year::before {
+            position: absolute;
+            display: block;
+            content: "";
+            width: 105px;
+            height: 105px;
+            border-radius: 100rem;
+            top: -19px;
+            left: 50%;
+            border: 6px solid #ccc;
+            transform: translateX(-50%);
+        }
+        
+        .time_item.active .time_item-year {
+            border: 8px solid #284188;
+            padding: 24px 17px;
+        }
+        
+        .time_item.active .time_item-year2 {
+            border: 8px solid #284188;
+            padding: 24px 14px;
+        }
+        
+        .time_item.active .time_item-text {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .time_item-text {
+            background-color: #274087;
+            margin-top: 70px;
+            padding: 20px 10px;
+            color: #fff;
+            border-radius: 0 50px 0 50px;
+            position: relative;
+            opacity: 0;
+            visibility: hidden;
+            transition: all .3s linear;
+            position: absolute;
+            width: 250px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+            font-size: 14px;
+            line-height: 20px;
+        }
+        
+        .time_item-text::before {
+            position: absolute;
+            content: "";
+            border: 20px solid;
+            border-color: transparent transparent #274087 transparent;
+            top: -35px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        @media screen and (max-width: 1024px) {
+            .time_item-year {
+                font-size: 14px;
+            }
+            .time_item.active .time_item-year {
+                 border: 6px solid #284188;
+                padding: 15px 9px;
+            }
+            .time_item.active .time_item-year2 {
+                 border: 6px solid #284188;
+                padding: 15px 6px;
+            }
+            .time_item-year {
+                
+                padding: 15px 9px;
+            }
+            .time_item-year2 {
+                
+                padding: 15px 7px;
+            }
+            .time_item.active .time_item-year::before {
+                width: 80px;
+                height: 80px;
+                top: -16px;
+                
+            }
+            .time_item-text {
+                width: 170px;
+                font-size: 13px;
+                line-height: 16px;
+                padding:10px 15px;
+                top: 5px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="time">
+        <div class="time_item active">
+            <span class="time_item-year">1991</span>
+            <p class="time_item-text">Started as a workshop with 5 workers</p>
+        </div>
+        <div class="time_item ">
+            <span class="time_item-year">1995</span>
+            <p class="time_item-text">Quan Dat company was astablished with a 2000m2 factory and finished the Yoo office building project in D.1, HCMC</p>
+        </div>
+        <div class="time_item">
+            <span class="time_item-year time_item-year2">2003</span>
+            <p class="time_item-text">Opened a new 10.000m2 factory in D.12, HCMC with 300 staffs</p>
+        </div>
+        <div class="time_item">
+            <span class="time_item-year time_item-year2">2005</span>
+            <p class="time_item-text">Cooperated with YKK AP Singapore in Unitised curtain wall works for Tan Son Nhat International Airport project</p>
+        </div>
+        <div class="time_item">
+            <span class="time_item-year time_item-year2">2006</span>
+            <p class="time_item-text">Awarded ISO 9001:2008 certification - Quality Management System</p>
+        </div>
+        <div class="time_item">
+            <span class="time_item-year time_item-year2">2013</span>
+            <p class="time_item-text">Opened Quan Dat branch in Cambodia and expanded into Cambodian market with the ACLEDA bank Headquarters Building project - Phnom Penh, Cambodia</p>
+        </div>
+        <div class="time_item">
+            <span class="time_item-year time_item-year2">2015</span>
+            <p class="time_item-text">To operate ERP - Enterprise Resource Planning</p>
+        </div>
+    </div>
+
+    <script>
+        const timeItems = document.querySelectorAll(".time_item");
+
+        timeItems.forEach((tab, index) => {
+            tab.onclick = function() {
+                document.querySelector(".time_item.active").classList.remove("active");
+                this.classList.add("active");
+            };
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .price-slider {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 100%;
+            height: 10px;
+            background: #000;
+            outline: none;
+            opacity: 0.8;
+            -webkit-transition: .2s;
+            transition: opacity .2s;
+        }
+        
+        .price-slider:hover {
+            opacity: 1;
+        }
+        
+        .price-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 24px;
+            height: 24px;
+            border-radius: 100rem;
+            background: #000;
+            cursor: pointer;
+            border: 4px solid #0086ff;
+        }
+        
+        .slider {
+            display: flex;
+            align-items: center;
+        }
+        
+        .slider__info {
+            width: 30%;
+        }
+        
+        .slider input {
+            width: 40%;
+            border-radius: 100rem;
+        }
+        
+        .slider__quantify {
+            width: 15%;
+            text-align: center;
+        }
+        
+        .slider__info h2 {
+            color: #0086ff;
+            font-size: 18px;
+            text-transform: uppercase;
+            font-weight: 700;
+        }
+        
+        .slider__quantify p {
+            color: #000;
+            font-weight: 700;
+        }
+        
+        @media screen and (max-width:1024px) {
+            .slider__info h2 {
+                font-size: 14px;
+            }
+            .slider__quantify p {
+                font-size: 14px;
+            }
+            .slider__info {
+                width: 30%;
+            }
+            .slider input {
+                width: 40%;
+            }
+            .slider__quantify {
+                width: 15%;
+            }
+        }
+        
+        @media screen and (max-width:767px) {
+            .slider {
+                flex-wrap: wrap;
+            }
+            .slider__info {
+                width: 100%;
+                text-align: center;
+            }
+            .slider input {
+                width: 60%;
+            }
+            .slider__quantify {
+                width: 20%;
+                padding-top: 10px;
+            }
+            .slider__info h2 {
+                font-size: 16px;
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="slider">
+        <div class="slider__info">
+            <h2 id="title1"></h2>
+        </div>
+        <input type="range" min="0" max="1251000" value="0" step="1000" class="price-slider" id="myRange1">
+        <div class="slider__quantify">
+            <p>Giá trị:<br> <span id="value1">0</span> </p>
+        </div>
+        <div class="slider__quantify">
+            <p>Tổng:<br> <span id="price1">0</span> </p>
+        </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            //phần get value từ json
+            $.getJSON('https://api-app.map4d.vn/map/price?isPublic=true', function(iotdata) {
+
+                for (let i = 0; i < iotdata.result.length; i++) {
+                    $('#title' + i).text(iotdata.result[i].serviceNameVi);
+                }
+                for (let i = 0; i < iotdata.result.length; i++) {
+                    $('#myRange' + i).on('input', function() {
+                        //khai báo biến để biết giá trị thanh trượt
+                        var rangeval = $('#myRange' + i).val();
+                        // lấy điều kiện giá mức level0
+                        if (rangeval <= parseInt(iotdata.result[i].prices[0].to)) {
+                            myrangetxt = rangeval * parseInt(iotdata.result[i].prices[0].amount.value);
+                            // điều kiện giá mức level1
+                        } else if (rangeval <= parseInt(iotdata.result[i].prices[1].to)) {
+                            myrangetxt = (rangeval - 100000) * parseInt(iotdata.result[i].prices[1].amount.value);
+                            // điều kiện giá mức level2
+                        } else if (rangeval <= parseInt(iotdata.result[i].prices[2].to)) {
+                            myrangetxt1 = 400000 * parseInt(iotdata.result[i].prices[1].amount.value);
+                            myrangetxt2 = (rangeval - 500000) * parseInt(iotdata.result[i].prices[2].amount.value);
+                            myrangetxt = myrangetxt1 + myrangetxt2;
+                            console.log(`myrangetxt1: ${myrangetxt1}`);
+                            console.log(`myrangetxt2: ${myrangetxt2}`);
+                            //điều kiện giá mức level3
+                        } else {
+                            myrangetxt = "Contact Us";
+                        }
+                        $('#value' + i).text(addCommas(rangeval));
+                        $('#price' + i).text(addCommas(myrangetxt));
+                    });
+                }
+                //format number
+                function addCommas(nStr) {
+                    nStr += '';
+                    x = nStr.split('.');
+                    x1 = x[0];
+                    x2 = x.length > 1 ? '.' + x[1] : '';
+                    var rgx = /(\d+)(\d{3})/;
+                    while (rgx.test(x1)) {
+                        x1 = x1.replace(rgx, '$1' + ',' + '$2');
+                    }
+                    return x1 + x2;
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

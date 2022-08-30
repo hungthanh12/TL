@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timeline</title>
+    <style>
+        .time {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 100px;
+        }
+        
+        .time_item {
+            text-align: center;
+            position: relative;
+        }
+        
+        .time_item-year {
+            font-size: 13px;
+            font-weight: bold;
+            position: relative;
+            transition: all .3s linear;
+            background-color: #ffffff;
+            cursor: pointer;
+        }
+        
+        .time_item.active .time_item-year {
+            font-size: 18px;
+        }
+        
+        .time_item-year::before {
+            position: absolute;
+            display: block;
+            content: "";
+            width: 50px;
+            height: 50px;
+            border-radius: 100rem;
+            top: -24px;
+            left: 50%;
+            border: 6px solid #ccc;
+            transform: translateX(-50%);
+        }
+        
+        .time_item.active .time_item-year::before {
+            position: absolute;
+            display: block;
+            content: "";
+            width: 50px;
+            height: 50px;
+            border-radius: 100rem;
+            top: -22px;
+            left: 50%;
+            border: 6px solid #274087;
+            transform: translateX(-50%);
+        }
+        
+        .time_item.active .time_item-year::after {
+            position: absolute;
+            display: block;
+            content: "";
+            width: 70px;
+            height: 70px;
+            border-radius: 100rem;
+            top: -32px;
+            left: 50%;
+            border: 6px solid #ccc;
+            transform: translateX(-50%);
+        }
+        
+        .time_item.active .time_item-text {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .time_item-text {
+            background-color: #274087;
+            margin-top: 70px;
+            padding: 20px 10px;
+            color: #fff;
+            border-radius: 0 50px 0 50px;
+            position: relative;
+            opacity: 0;
+            visibility: hidden;
+            transition: all .3s linear;
+            position: absolute;
+            width: 250px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+            font-size: 14px;
+            line-height: 20px;
+        }
+        
+        .time_item-text::before {
+            position: absolute;
+            content: "";
+            border: 20px solid;
+            border-color: transparent transparent #274087 transparent;
+            top: -35px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="time">
+        <div class="time_item active">
+            <span class="time_item-year">1991</span>
+            <p class="time_item-text">Opened a small workshop with 5 skilled engineers.</p>
+        </div>
+        <div class="time_item ">
+            <span class="time_item-year">1995</span>
+            <p class="time_item-text">Established an LLC with a 2,000m2 factory and finished the first project – Yoco Office Building in D.1, HCMC, VN</p>
+        </div>
+        <div class="time_item">
+            <span class="time_item-year time_item-year2">2003</span>
+            <p class="time_item-text">Expanded to a new 10,000m2 factory in D.12, HCMC, VN </p>
+        </div>
+        <div class="time_item">
+            <span class="time_item-year time_item-year2">2004</span>
+            <p class="time_item-text">Invested in CNC Machining Center and became the first aluminum and glass contractor in vn with CNC for fabrication </p>
+        </div>
+        <div class="time_item">
+            <span class="time_item-year time_item-year2">2005</span>
+            <p class="time_item-text">Collaborated with foreign partners to implement the Unitized facade system of Tan Son Nhat International Airport (HCMC, VN) </p>
+        </div>
+        <div class="time_item">
+            <span class="time_item-year time_item-year2">2006</span>
+            <p class="time_item-text">Awarded ISO 9001:2008 certification – Quality Management System</p>
+        </div>
+        <div class="time_item">
+            <span class="time_item-year time_item-year2">2007</span>
+            <p class="time_item-text">First vietnamese façade contractor to design and implement Unitized curtain wall system for high-rise buildings at Gemadept Tower and Sailing Tower (HCMC, VN)
+            </p>
+        </div>
+        <div class="time_item">
+            <span class="time_item-year">2010</span>
+            <p class="time_item-text">Collaborated with foreign partners to implement the Unitized facade system of 68-storey Bitexco Financial Tower (HCMC, VN)</p>
+        </div>
+        <div class="time_item ">
+            <span class="time_item-year">2011</span>
+            <p class="time_item-text">Expanded to a 70,000m2 new factory in Binh Duong and began serving Australian market.
+            </p>
+        </div>
+        <div class="time_item">
+            <span class="time_item-year time_item-year2">2013</span>
+            <p class="time_item-text">Began serving Cambodian market.</p>
+        </div>
+        <div class="time_item">
+            <span class="time_item-year time_item-year2">2014</span>
+            <p class="time_item-text">Began serving Myanmar market.</p>
+        </div>
+        <div class="time_item">
+            <span class="time_item-year time_item-year2">2015</span>
+            <p class="time_item-text">First façade contractor to operate Enterprise Resource Planning (ERP) with Microsoft Dynamics AX. </p>
+        </div>
+        <div class="time_item">
+            <span class="time_item-year time_item-year2">2019</span>
+            <p class="time_item-text">Upgraded ERP system to SAP S/4 HANA</p>
+        </div>
+        <div class="time_item">
+            <span class="time_item-year time_item-year2">2022</span>
+            <p class="time_item-text">Awarded ISO 14001:2015 Environmental Management System and ISO 45001:2018 Occupational Health and Safety Management System</p>
+        </div>
+    </div>
+    <script>
+        const timeItems = document.querySelectorAll(".time_item");
+        timeItems.forEach((tab, index) => {
+            tab.onclick = function() {
+                document.querySelector(".time_item.active").classList.remove("active");
+                this.classList.add("active");
+            };
+        });
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            setInterval(function() {
+                if ($(".time_item").last().hasClass("active")) {
+                    $(".time_item").first().addClass("active2");
+                } else {
+                    $(".active").next().addClass("active2");
+                }
+                $(".active").removeClass("active");
+                $(".active2").addClass("active");
+                $(".active2").removeClass("active2");
+            }, 3000);
+        });
+    </script>
+</body>
+
+</html>
